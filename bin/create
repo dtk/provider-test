@@ -1,0 +1,16 @@
+require_relative '../lib/rds'
+
+module DTKModule
+  def self.execute(attributes)
+    dynamic_attributes = { :dynattr1 => rand(0..10), :dynattr2 => Time.now.to_s }
+    response = Hash.new
+    response[:received_attributes] = attributes
+    response[:success] = 'true'
+    response[:dynamic_attributes] = dynamic_attributes
+    response
+  end
+
+  execute({})
+end
+
+

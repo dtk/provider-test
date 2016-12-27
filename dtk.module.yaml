@@ -1,0 +1,43 @@
+---
+module: provider-test/rds
+version: master
+dependencies:
+  dtk-provider/ruby-provider: master
+assemblies:
+  test:
+    components:
+    - rds::instance
+component_defs:
+  instance:
+    attributes:
+      instance_name:
+        type: string
+      region:
+        type: string
+      endpoint:
+        type: string
+      db_name:
+        type: string
+    providers:
+      ruby:
+        gems:
+        - aws-sdk
+    actions:
+      create:
+        type: ruby
+        ruby_entry_fn: bin/create
+      delete:
+        type: ruby
+        ruby_entry_fn: bin/delete
+      test:
+        type: ruby
+        ruby_entry_fn: bin/test
+      puppet_action:
+        puppet_class: rds
+      bash_action:
+        commands:
+        - RUN:
+          command: ls /
+  
+ 
+ 

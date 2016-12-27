@@ -1,0 +1,9 @@
+require_relative '../lib/rds'
+
+module DTKModule
+  def self.execute(attributes)
+    response = Hash.new
+    response[:received_attributes] = attributes
+    attributes
+  end
+end
